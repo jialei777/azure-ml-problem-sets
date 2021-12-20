@@ -41,7 +41,7 @@ class HelloWorldDemo(AMLPipelineHelper):
         """
 
         # helper functions below load the subgraph/component from registered or local version depending on your config.run.use_local
-        hello_world_component = self.component_load("<your-component-key>") # To-Do
+        hello_world_component = self.component_load("HelloWorldComponent") # Component key = HelloWorldComponent
 
         # Here you should create an instance of a pipeline function (using your custom config dataclass)
         @dsl.pipeline(
@@ -60,9 +60,10 @@ class HelloWorldDemo(AMLPipelineHelper):
             # component_instance = component_class(input=data, param=value)
             # or
             # subgraph_instance = subgraph_function(input=data, param=value)
-            demo_component_step = <name_of_component_loaded_above()> # To-Do
+            demo_component_step = hello_world_component() # component_loaded_above = hello_world_component()
 
-            self.apply_recommended_runsettings("<your-component-key>", demo_component_step, gpu=False) # To-Do
+            self.apply_recommended_runsettings("HelloWorldComponent", demo_component_step, gpu=False) # Component key = HelloWorldComponent
+                                                                                                       # !!!! Question: why need the component key as an input?
 
         # finally return the function itself to be built by helper code
         return demo_pipeline_function
