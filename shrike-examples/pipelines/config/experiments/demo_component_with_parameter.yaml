@@ -43,4 +43,5 @@ module_loader: # module loading params
   local_steps_folder: "../../../components" # NOTE: run scripts from the `shrike-examples` directory
 
 # DemoComponent config
-# To-Do
+democomponent: # 'democomponent' section name will be used in the experiment python file and in the command line to refer to this set of config parameters
+  value: 314 # the value on which the component will operate

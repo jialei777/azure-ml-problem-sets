@@ -16,7 +16,7 @@ def get_arg_parser(parser=None):
     if parser is None:
         parser = argparse.ArgumentParser(description=__doc__)
 
-    # To-Do
+    parser.add_argument('--value', type = int, default = 0, help = 'input value') # add the value to the parser
 
     return parser
 
@@ -28,7 +28,9 @@ def main():
     args = parser.parse_args()
     args = vars(args)
 
-    # To-Do
+    value_inp = args['value']
+    value_add = value_inp + 1000
+    print('The input value is {0}, and the output value is {1}'.format(value_inp, value_add))
 
 if __name__ == "__main__":
     main()

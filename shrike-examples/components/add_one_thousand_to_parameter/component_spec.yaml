@@ -9,13 +9,17 @@ tags:
   contact: aml-ds@microsoft.com
 
 inputs:
-  # To-Do: define a 'value' parameter
+  value:   # add an integer parameter named 'value' 
+    type: integer
+    description: initial value to be added
+    default: 77
+    optional: true
 
 outputs: {}
 
-# To-Do: add newly introduced parameter to the command
-command: >-
-  python3 run.py
+
+command: >-      # --value {inputs.value} or [--value {inputs.value}]
+  python3 run.py [--value {inputs.value}]
 environment:
   docker:
     enabled: true
