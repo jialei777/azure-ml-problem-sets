@@ -38,5 +38,7 @@ def main():
     num_rows = csvdataset.count()[0]
     print("the dataset contains {0} rows".format(num_rows))
 
+    print(csvdataset.to_string())
+
 if __name__ == "__main__":
     main()
