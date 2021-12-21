@@ -43,7 +43,7 @@ module_loader: # module loading params
 
 # input data config
 inputs:
-  input_data: # To-Do: provide the name of your dataset
+  input_data: Iris # the name of your dataset 
   input_data_version: "latest" # use this to pin a specific version
 
 # probe component #1 config

@@ -44,5 +44,5 @@ module_loader: # module loading params
 
 # DemoComponent config
 democomponent:
-  input_data: Iris # the name of the dataset you'll be working on, as seen in the UI
+  input_data: Iris # the name of the dataset you'll be working on, no "xxx" here
   input_data_version: "latest" # this will ensure you always consume the latest version of the dataset

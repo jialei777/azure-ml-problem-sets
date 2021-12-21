@@ -13,13 +13,14 @@ inputs:
     type: integer
     description: initial value to be added
     default: 77
-    optional: true
+    optional: false
 
 outputs: {}
 
-
-command: >-      # --value {inputs.value} or [--value {inputs.value}]
-  python3 run.py [--value {inputs.value}]
+# --value {inputs.value} if value is NOT optional 
+# [--value {inputs.value}] if value is optional 
+command: >-
+  python3 run.py --value {inputs.value}
 environment:
   docker:
     enabled: true

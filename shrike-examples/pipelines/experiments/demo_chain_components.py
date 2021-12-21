@@ -75,11 +75,11 @@ class ChainComponentsDemo(AMLPipelineHelper):
             )
 
             self.apply_recommended_runsettings(
-                "probe", probe_component_step_1, gpu=True
+                "probe", probe_component_step_1, gpu=True  # change it to false 
             )
 
             probe_component_step_2 = probe_component(
-                input_data= # To-Do: this is where you need to connect teh output from the first probe component
+                input_data= probe_component_step_1.outputs.results, # connect the output "results" from the first probe component
                 scan_args=config.probe2.scan_args,
                 scan_deps=config.probe2.scan_deps,
                 scan_input=config.probe2.scan_input,
@@ -88,7 +88,7 @@ class ChainComponentsDemo(AMLPipelineHelper):
             )
 
             self.apply_recommended_runsettings(
-                "probe", probe_component_step_2, gpu=True
+                "probe", probe_component_step_2, gpu= True  # change it to false 
             )
 
             # return {key: output}
