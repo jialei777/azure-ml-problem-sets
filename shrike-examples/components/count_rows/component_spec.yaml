@@ -9,13 +9,16 @@ tags:
   contact: aml-ds@microsoft.com
 
 inputs:
-  # To-Do: define an 'input_data' parameter
+  input_data:  # use file dataset 
+    type: path # should it be AzureMLDataset???
+    description: dataset as a path to my Iris File dataset from Azure ML studio
+    optional: false   
 
 outputs: {}
 
-# To-Do: add newly introduced parameter to the command
-command: >-
-  python3 run.py 
+
+command: >-  # add input data, use --input_data {inputs.input_data} with no []???
+  python3 run.py --input_data {inputs.input_data}  
 environment:
   docker:
     enabled: true

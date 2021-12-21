@@ -43,4 +43,6 @@ module_loader: # module loading params
   local_steps_folder: "../../../components" # NOTE: run scripts from the `shrike-examples` directory
 
 # DemoComponent config
-# To-Do
+democomponent:
+  input_data: Iris # the name of the dataset you'll be working on, as seen in the UI
+  input_data_version: "latest" # this will ensure you always consume the latest version of the dataset
