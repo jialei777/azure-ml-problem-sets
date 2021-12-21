@@ -31,12 +31,12 @@ def main():
 
 
     # print the dataset path
-    print("Path to the input dataset is '" + args[input_data] + "'.") # args[input_data] should be a string.
+    print("Path to the input dataset is '" + args["input_data"] + "'.") # args["input_data"] should be a string.
 
     # print the row counts
     csvdataset = pd.read_csv(args["input_data"] + "/iris.csv") # need to be consist with the input path
     num_rows = csvdataset.count()[0]
-    print("the dataset contains {0} rows".format{num_rows})
+    print("the dataset contains {0} rows".format(num_rows))
 
 if __name__ == "__main__":
     main()
