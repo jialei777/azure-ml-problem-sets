@@ -41,7 +41,10 @@ class DynamicGraphDemo(AMLPipelineHelper):
         """
 
         # helper functions below load the subgraph/component from registered or local version depending on your config.run.use_local
-        # To-Do: load both components
+        # load both components
+        hello_world_component = self.component_load("HelloWorldComponent")
+        component_with_parameter = self.component_load("ComponentWithParameter")
+
 
         # Here you should create an instance of a pipeline function (using your custom config dataclass)
         @dsl.pipeline(
@@ -62,6 +65,16 @@ class DynamicGraphDemo(AMLPipelineHelper):
             # subgraph_instance = subgraph_function(input=data, param=value)
 
             # To-Do: create a variable containing the parameter value read from the config file
+            which_component = config.dynamicgraphparameter.which_component
+
+            if which_component == "helloworld":
+                demo_component_step = hello_world_component()
+                self.apply_recommended_runsettings("HelloWorldComponent", demo_component_step, gpu=False) 
+
+            if which_component == "democomponent":
+                demo_component_step = component_with_parameter(value = config.democomponent.value)
+                self.apply_recommended_runsettings("ComponentWithParameter", demo_component_step, gpu=False)
+                
 
             # To-Do: Write an if block to instantiate two different components based on the above variable's value
 

@@ -28,7 +28,7 @@ module_loader: # module loading params
   # IMPORTANT: if you want to modify a given module, add its key here
   # see the code for identifying the module key
   # use comma separation in this string to use multiple local modules
-  use_local: "*"
+  use_local: "*" # this means all?
 
   # fix the version of modules in all subgraphs (if left unspecified)
   # NOTE: use the latest release version to "fix" your branch to a given release
@@ -44,7 +44,11 @@ module_loader: # module loading params
 
 # the parameter that controls which component we'll use
 # To-Do: add, in its own section, the parameter that will control which component to use
+dynamicgraphparameter:
+  which_component: "helloworld"  #  "democomponent" or "helloworld"
 
 # DemoComponent config
   # To-Do: add, in its own section, the parameter that will be operated on by the demo component from problem 02
+democomponent:
+  value: 314
 
