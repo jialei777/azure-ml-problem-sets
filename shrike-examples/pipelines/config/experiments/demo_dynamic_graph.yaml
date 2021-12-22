@@ -52,3 +52,6 @@ dynamicgraphparameter:
 democomponent:
   value: 314
 
+experimentname:
+  name: "demo_dynamic_graph"
+  description: "The Azure ML dynamic graph generation demo"

@@ -3,6 +3,8 @@ The Azure ML pipeline for running a basic experiment for which the graph is dyna
 
 to execute:
 > python pipelines/experiments/demo_dynamic_graph.py --config-dir pipelines/config --config-name experiments/demo_dynamic_graph run.submit=True
+to execute with command-line parameter override:
+> python pipelines/experiments/demo_dynamic_graph.py --config-dir pipelines/config --config-name experiments/demo_dynamic_graph run.submit=True dynamicgraphparameter.which_component="democomponent" democomponent.value=777 experimentname.name="myname_inp_is_777"
 """
 # pylint: disable=no-member
 # NOTE: because it raises 'dict' has no 'outputs' member in dsl.pipeline construction
@@ -47,9 +49,14 @@ class DynamicGraphDemo(AMLPipelineHelper):
 
 
         # Here you should create an instance of a pipeline function (using your custom config dataclass)
+        # @dsl.pipeline(
+        #     name="demo_dynamic_graph",
+        #     description="The Azure ML dynamic graph generation demo",
+        #     default_datastore=config.compute.compliant_datastore,
+        # )
         @dsl.pipeline(
-            name="demo_dynamic_graph",
-            description="The Azure ML dynamic graph generation demo",
+            name=config.experimentname.name,
+            description=config.experimentname.description,
             default_datastore=config.compute.compliant_datastore,
         )
         def demo_pipeline_function():
@@ -74,7 +81,7 @@ class DynamicGraphDemo(AMLPipelineHelper):
             if which_component == "democomponent":
                 demo_component_step = component_with_parameter(value = config.democomponent.value)
                 self.apply_recommended_runsettings("ComponentWithParameter", demo_component_step, gpu=False)
-                
+
 
             # To-Do: Write an if block to instantiate two different components based on the above variable's value
 
