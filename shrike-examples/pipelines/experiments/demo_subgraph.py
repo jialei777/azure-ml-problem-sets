@@ -61,8 +61,8 @@ class DemoGraphWithSubgraph(AMLPipelineHelper):
 
         # Here you should create an instance of a pipeline function (using your custom config dataclass)
         @dsl.pipeline(
-            name="demo-eyesoff",
-            description="The AML eyes-off pipeline using a subgraph with the Probe component for Accelerator Demo",
+            name="demo-subgraph",
+            description="The Azure ML demo of multi-component pipeline which uses a subgraph",
             default_datastore=config.compute.compliant_datastore,
         )
         def demo_pipeline_function(probe_dataset):
