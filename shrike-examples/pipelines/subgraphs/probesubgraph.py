@@ -20,13 +20,12 @@ if ACCELERATOR_ROOT_PATH not in sys.path:
     sys.path.append(str(ACCELERATOR_ROOT_PATH))
 
 
-class ClassName(AMLPipelineHelper): # To-Do: give a good name to your class here
+class DemoSubgraph(AMLPipelineHelper): # rename the class as DemoSubgraph
     """Runnable/reusable pipeline helper class
 
     This class inherits from AMLPipelineHelper which provides
     helper functions to create reusable production pipelines.
     """
-
 
     def build(self, config):
         """Builds a pipeline function for this pipeline using AzureML SDK (dsl.pipeline).
@@ -53,9 +52,14 @@ class ClassName(AMLPipelineHelper): # To-Do: give a good name to your class here
             description="The AML pipeline for the demo subgraph",
             default_datastore=config.compute.compliant_datastore,
         )
-        def demo_pipeline_function( # To-Do: rename this function to make it clear we are treating this as a subgraph
+        def demosubgraph_pipeline_function( # rename it to demosubgraph_pipeline_function 
             probe_dataset,
-            param_scan_args=..., # To-Do: add all arguments from the config file
+            param_scan_args=True,  # add all those input values
+            param_scan_deps=True, 
+            param_scan_input=True, 
+            param_scan_env_1=True, 
+            param_scan_env_2=False,
+            param_verbose=True, 
         ):
             """Pipeline function for this graph.
 
@@ -72,7 +76,11 @@ class ClassName(AMLPipelineHelper): # To-Do: give a good name to your class here
             # subgraph_instance = subgraph_function(input=data, param=value)
             probe_component_step_1 = probe_component(
                 input_data=probe_dataset,
-                scan_args=... # To-Do: use the parameters that were just defined, not the the values from the config files
+                scan_args=param_scan_args,
+                scan_deps=param_scan_deps, 
+                scan_input=param_scan_input, 
+                scan_env=param_scan_env_1, 
+                verbose=param_verbose,
             )
 
             self.apply_recommended_runsettings(
@@ -81,7 +89,11 @@ class ClassName(AMLPipelineHelper): # To-Do: give a good name to your class here
 
             probe_component_step_2 = probe_component(
                 input_data=probe_component_step_1.outputs.results,  # this is where we pipe the output of the first module to the input of the second module
-                scan_args=... # To-Do: use the parameters that were just defined, not the the values from the config files
+                scan_args=param_scan_args,
+                scan_deps=param_scan_deps, 
+                scan_input=param_scan_input, 
+                scan_env=param_scan_env_2, 
+                verbose=param_verbose,
             )
 
             self.apply_recommended_runsettings(

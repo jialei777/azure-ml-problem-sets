@@ -43,7 +43,7 @@ module_loader: # module loading params
 
 # probe component config
 probesubgraph:
-  input_data: # To-Do: provide the name of your dataset
+  input_data: Iris # To-Do: provide the name of your dataset
   input_data_version: "latest" # use this to pin a specific version
   scan_args: true
   scan_deps: true
