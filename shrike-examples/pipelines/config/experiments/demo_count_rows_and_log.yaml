@@ -44,5 +44,5 @@ module_loader: # module loading params
 
 # DemoComponent config
 democomponent:
-  input_data: irisdata # the data we'll be working on
+  input_data: Iris # the data we'll be working on
   input_data_version: "latest" # use this to pin a specific version
