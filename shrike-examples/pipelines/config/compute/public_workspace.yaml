@@ -1,14 +1,14 @@
 # @package _group_
 # name of default target
-default_compute_target: "cpu-cluster"
+default_compute_target: 'jialeichen1' #"cpu-cluster"
 # where intermediary output is written
 compliant_datastore: "workspaceblobstore"
 
 # Linux targets
-linux_cpu_dc_target: "cpu-cluster"
-linux_cpu_prod_target: "cpu-cluster"
-linux_gpu_dc_target: "gpu-nc12-lowpri"
-linux_gpu_prod_target: "gpu-nc12-lowpri"
+linux_cpu_dc_target: 'jialeichen1' #"cpu-cluster"
+linux_cpu_prod_target: 'jialeichen1' #"cpu-cluster"
+linux_gpu_dc_target: 'jialeichen2' #"gpu-nc12-lowpri"
+linux_gpu_prod_target: 'jialeichen2' #"gpu-nc12-lowpri"
 
 # data I/O for linux modules
 linux_input_mode: "mount"
